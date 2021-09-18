@@ -1,0 +1,19 @@
+{
+  "name": "pokemon-counter-calculator",
+  "version": "1.0.0",
+  "description": "Finds the type-based counters to a specified pokemon.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samhill15/pokemon-counter-calculator.git"
+  },
+  "author": "Sam Hilliard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samhill15/pokemon-counter-calculator/issues"
+  },
+  "homepage": "https://github.com/samhill15/pokemon-counter-calculator#readme"
+}
