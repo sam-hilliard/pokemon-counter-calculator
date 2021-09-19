@@ -1,12 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
 
-function SearchBar() {
+import Button from 'react-bootstrap/Button';
 
-    const [query, setQuery] = useState('');
 
-    function handleClick() {
-        console.log(query);
+function SearchBar(props) {
+    const [query, setQuery] = useState('')
+
+    async function handleClick() {
+        props.onQuery(query);
         setQuery('');
     }
 
@@ -17,7 +19,7 @@ function SearchBar() {
     return (
         <div>
             <input type="text" value={query} onChange={handleChange} placeholder="Pokemon's Name" />
-            <button type="button" onClick={handleClick} className="btn btn-primary">Calculate</button>
+            <Button onClick={handleClick} >Calculate</Button>
         </div>
     );
 
