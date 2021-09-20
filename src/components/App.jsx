@@ -24,7 +24,7 @@ function App() {
         <div>
             <Heading />
             <SearchBar onQuery={handleQuery} />
-            <CounterResults pokemon={pokemon} />
+            {Object.entries(pokemon).length > 0 && <CounterResults pokemon={pokemon} />}
         </div>
     );
 }

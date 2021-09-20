@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Pokemon from './Pokemon';
+
 function CounterResults(props) {
 
     function displayPokemon() {
@@ -7,10 +9,11 @@ function CounterResults(props) {
             return <p>{props.pokemon.error}</p>
         } else {
             return(
-                <div>
-                    <p>{props.pokemon.name}</p>
-                    <img alt={props.pokemon.name + ' image'} src={props.pokemon.sprites.front_default} />
-                </div>
+                <Pokemon 
+                    name={props.pokemon.name}
+                    image={props.pokemon.sprites.front_default}
+                    types={props.pokemon.types}
+                />
             );
         }
     }
