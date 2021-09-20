@@ -16,7 +16,7 @@ function App() {
         await axios.get(baseURL + query.toLowerCase()).then(res => {
             setPokemon(res.data);
         }).catch(() => {
-            setPokemon({error: query + ' could not be found'});
+            setPokemon({error: `Could not find pokemon with name, "${query}."`});
         });
     }
 
