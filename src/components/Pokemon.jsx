@@ -1,23 +1,13 @@
 import React from 'react';
+import { parseTypes } from '../typeParser';
 
 function Pokemon(props) {
-
-    function parseTypes() {
-        let typeStr = '';
-
-        props.types.forEach(obj => {
-            typeStr += obj.type.name + ', ';
-        });
-
-        typeStr = typeStr.replace(new RegExp(', $'), '');
-        return typeStr;
-    }
 
     return (
         <div>
             <p>{props.name}</p>
             <img alt={props.name + ' image'} src={props.image} />
-            <p>{parseTypes()}</p>
+            <p>{parseTypes(props.types)}</p>
         </div>
     );
 }
