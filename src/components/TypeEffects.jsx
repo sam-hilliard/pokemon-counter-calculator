@@ -1,15 +1,41 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
-import { parseTypes } from '../typeParser';
 
 function TypeEffects(props) {
 
-    console.log(props.typeData);
+
+
+    function getCounters(isAttack) {
+        let counters = '';
+        let counters2x = '';
+        props.typeData.forEach(type => {
+            let counterData = isAttack ? type.double_damage_from : type.half_damage_to;
+            counterData.forEach(counterObj => {
+                let counter = counterObj.name;
+                if (counters.includes(counter)) {
+                    counters2x += counter.name + ', ';
+                    counters.replace(counter + ', ', '');
+                } else {
+                    counters += counter +  ', ';
+                }
+            });
+        });
+
+        counters = counters.replace(new RegExp(', $'), '');
+        counters2x = counters2x.replace(new RegExp(', $'), '');
+        return {counters: counters, counters2x: counters2x}
+    }
 
     return (
         <div>
-            <h2>Attack Counters</h2>
-            <h2>Defense Counters</h2>
+            <h3>Attack Counters</h3>
+            <p>Super Effective: {getCounters(true).counters}</p>
+            {getCounters(true).counters2x.lenght > 0 && <p>2x Effective: {getCounters(true).counters2x}</p>}
+            <h3>Defense Counters</h3>
+            <p>Not Very Effective: {getCounters(true).counters}</p>
+            {getCounters(true).counters2x.lenght > 0 && <p>2x Not Effective: {getCounters(true).counters2x}</p>}
         </div>
     )
 }
