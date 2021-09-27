@@ -10,17 +10,22 @@ function CounterResults(props) {
     const [typeData, setTypeData] = useState([]);
 
     useEffect(() => {
-        const typeURLs = props.pokemon.types.map(obj => {
-            return obj.type.url;
-        });
+        // FIXME: find a way to make this call when a new pokemon is queried
+        setTypeData([]);
 
-        typeURLs.forEach(url => {
-           axios.get(url).then(res => {
-                setTypeData(oldData => [...oldData, res.data.damage_relations]);
-           }).catch(err => {
-               console.log(err);
-           });
-        });
+        if (props.pokemon.types) {
+            const typeURLs = props.pokemon.types.map(obj => {
+                return obj.type.url;
+            });
+
+            typeURLs.forEach(url => {
+                axios.get(url).then(res => {
+                        setTypeData(oldData => [...oldData, res.data.damage_relations]);
+                }).catch(err => {
+                    console.log(err);
+                });
+            });
+        }
     }, [props.pokemon.types]);
 
 

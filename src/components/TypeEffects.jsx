@@ -1,11 +1,7 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
 
 
 function TypeEffects(props) {
-
-
 
     function getCounters(isAttack) {
         let counters = '';
@@ -15,7 +11,7 @@ function TypeEffects(props) {
             counterData.forEach(counterObj => {
                 let counter = counterObj.name;
                 if (counters.includes(counter)) {
-                    counters2x += counter.name + ', ';
+                    counters2x += counter + ', ';
                     counters.replace(counter + ', ', '');
                 } else {
                     counters += counter +  ', ';
@@ -32,10 +28,10 @@ function TypeEffects(props) {
         <div>
             <h3>Attack Counters</h3>
             <p>Super Effective: {getCounters(true).counters}</p>
-            {getCounters(true).counters2x.lenght > 0 && <p>2x Effective: {getCounters(true).counters2x}</p>}
+            {getCounters(true).counters2x.length > 0 && <p>2x Effective: {getCounters(true).counters2x}</p>}
             <h3>Defense Counters</h3>
-            <p>Not Very Effective: {getCounters(true).counters}</p>
-            {getCounters(true).counters2x.lenght > 0 && <p>2x Not Effective: {getCounters(true).counters2x}</p>}
+            <p>Not Very Effective: {getCounters(false).counters}</p>
+            {getCounters(false).counters2x.length > 0 && <p>2x Not Effective: {getCounters(false).counters2x}</p>}
         </div>
     )
 }

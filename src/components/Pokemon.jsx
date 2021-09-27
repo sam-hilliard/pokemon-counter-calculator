@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Card from 'react-bootstrap/Card';
+
 function Pokemon(props) {
 
     function parseTypes(types) {
@@ -14,11 +16,13 @@ function Pokemon(props) {
     }
 
     return (
-        <div>
-            <p>{props.name}</p>
-            <img alt={props.name + ' image'} src={props.image} />
-            <p>{parseTypes(props.types)}</p>
-        </div>
+        <Card className="text-center">
+            <Card.Img variant="top" src={props.image} />
+            <Card.Body>
+                <Card.Title>{props.name}</Card.Title>
+                <Card.Text>{parseTypes(props.types)}</Card.Text>
+            </Card.Body>
+        </Card>
     );
 }
 
