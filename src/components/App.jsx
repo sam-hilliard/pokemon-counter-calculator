@@ -7,6 +7,7 @@ import Heading from './Heading';
 import SearchBar from './SearchBar';
 import CounterResults from './CounterResults'
 import Selector from './Selector';
+import TypeDropDown from './TypeDropDown';
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
     return (
         <div>
             <Heading />
-            {isPokemon ? <SearchBar onQuery={handleQuery} /> : <p>Type</p>}
+            {isPokemon ? <SearchBar onQuery={handleQuery} /> : <TypeDropDown />}
             <Selector onSelect={handleSelection} />
             {Object.entries(pokemon).length > 0 && <CounterResults pokemon={pokemon} />}
         </div>
