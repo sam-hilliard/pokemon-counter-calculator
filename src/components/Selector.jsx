@@ -8,7 +8,7 @@ function Selector(props) {
     function handleChange(e) {
         const pokemonChecked = e.target.value === 'pokemon';
         setIsPokemon(pokemonChecked);
-        props.onSelect(isPokemon);
+        props.onSelect(pokemonChecked);
     }
 
     return (
