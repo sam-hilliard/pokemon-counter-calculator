@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 
 import Dropdown from 'react-bootstrap/Dropdown';
 
-function TypeDropDown() {
+function TypeDropDown(props) {
 
     const [types, setTypes] = useState([]);
-    const [selected, setSelected] = useState('Type');
+    const [selected, setSelected] = useState('none');
     
     useEffect(() => {
 
@@ -23,20 +23,22 @@ function TypeDropDown() {
 
     function handleClick(e) {
         setSelected(e.target.text);
+        props.onSelect(e.target.text);
     }
 
     return (
-        <Dropdown>
-        <Dropdown.Toggle variant="light">
-            {selected}
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu>
-            {types.map(type => {
-                return <Dropdown.Item key={type} onClick={handleClick}>{type}</Dropdown.Item>
-            })}
-        </Dropdown.Menu>
-        </Dropdown>
+            <Dropdown>
+            <Dropdown.Toggle variant="light">
+                {selected}
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+                <Dropdown.Item onClick={handleClick}>none</Dropdown.Item>
+                <Dropdown.Divider />
+                {types.map(type => {
+                    return <Dropdown.Item key={type} onClick={handleClick}>{type}</Dropdown.Item>
+                })}
+            </Dropdown.Menu>
+            </Dropdown>
     );
 
 }

@@ -7,7 +7,7 @@ import Heading from './Heading';
 import SearchBar from './SearchBar';
 import CounterResults from './CounterResults'
 import Selector from './Selector';
-import TypeDropDown from './TypeDropDown';
+import TypeSelector from './TypeSelector';
 
 function App() {
 
@@ -16,6 +16,8 @@ function App() {
     const [isPokemon, setIsPokemon] = useState(true);
 
     async function handleQuery(query) {
+        // FIXME: use isLoading state here
+
         await axios.get(baseURL + query.toLowerCase()).then(res => {
             setPokemon(res.data);
         }).catch(() => {
@@ -30,7 +32,7 @@ function App() {
     return (
         <div>
             <Heading />
-            {isPokemon ? <SearchBar onQuery={handleQuery} /> : <TypeDropDown />}
+            {isPokemon ? <SearchBar onQuery={handleQuery} /> : <TypeSelector />}
             <Selector onSelect={handleSelection} />
             {Object.entries(pokemon).length > 0 && <CounterResults pokemon={pokemon} />}
         </div>
