@@ -3,6 +3,8 @@ import { useState } from 'react';
 
 import axios from 'axios';
 
+import Button from 'react-bootstrap/Button';
+
 import Heading from './Heading';
 import SearchBar from './SearchBar';
 import CounterResults from './CounterResults'
@@ -18,11 +20,13 @@ function App() {
     async function handleQuery(query) {
         // FIXME: use isLoading state here
 
-        await axios.get(baseURL + query.toLowerCase()).then(res => {
-            setPokemon(res.data);
-        }).catch(() => {
-            setPokemon({error: `Could not find pokemon with name, "${query}."`});
-        });
+        console.log(query);
+
+        // await axios.get(baseURL + query.toLowerCase()).then(res => {
+        //     setPokemon(res.data);
+        // }).catch(() => {
+        //     setPokemon({error: `Could not find pokemon with name, "${query}."`});
+        // });
     }
 
     function handleSelection(choice) {
@@ -32,7 +36,7 @@ function App() {
     return (
         <div>
             <Heading />
-            {isPokemon ? <SearchBar onQuery={handleQuery} /> : <TypeSelector />}
+            {isPokemon ? <SearchBar onSubmit={handleQuery} /> : <TypeSelector onSubmit={handleQuery}/>}
             <Selector onSelect={handleSelection} />
             {Object.entries(pokemon).length > 0 && <CounterResults pokemon={pokemon} />}
         </div>

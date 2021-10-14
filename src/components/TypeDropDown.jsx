@@ -23,7 +23,7 @@ function TypeDropDown(props) {
 
     function handleClick(e) {
         setSelected(e.target.text);
-        props.onSelect(e.target.text);
+        props.onSelect(props.name, e.target.text);
     }
 
     return (
