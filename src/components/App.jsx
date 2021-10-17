@@ -1,9 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-
 import axios from 'axios';
-
-import Button from 'react-bootstrap/Button';
 
 import Heading from './Heading';
 import SearchBar from './SearchBar';
@@ -13,24 +10,35 @@ import TypeSelector from './TypeSelector';
 
 function App() {
 
-    const baseURL = 'https://pokeapi.co/api/v2/pokemon/';
+    const baseURL = 'https://pokeapi.co/api/v2/';
     const [pokemon, setPokemon] = useState({});
+    const [types, setTypes] = useState([]);
     const [isPokemon, setIsPokemon] = useState(true);
 
-    async function handleQuery(query) {
-        // FIXME: use isLoading state here
-
+    function handleQuery(query) {
         console.log(query);
 
-        // await axios.get(baseURL + query.toLowerCase()).then(res => {
-        //     setPokemon(res.data);
-        // }).catch(() => {
-        //     setPokemon({error: `Could not find pokemon with name, "${query}."`});
-        // });
+        if(isPokemon) {
+            queryByName(query);
+        } else {
+            queryByType(query);
+        }
     }
 
     function handleSelection(choice) {
         setIsPokemon(choice);
+    }
+
+    async function queryByName(query) {
+        await axios.get(baseURL + 'pokemon/' + query.toLowerCase()).then(res => {
+            setPokemon(res.data);
+        }).catch(() => {
+            setPokemon({error: `Could not find pokemon with name, "${query}."`});
+        });
+    }
+
+    async function queryByType(query) {
+
     }
 
     return (
@@ -38,7 +46,7 @@ function App() {
             <Heading />
             {isPokemon ? <SearchBar onSubmit={handleQuery} /> : <TypeSelector onSubmit={handleQuery}/>}
             <Selector onSelect={handleSelection} />
-            {Object.entries(pokemon).length > 0 && <CounterResults pokemon={pokemon} />}
+            <CounterResults pokemon={pokemon} types={types} isPokemon={isPokemon} />
         </div>
     );
 }
