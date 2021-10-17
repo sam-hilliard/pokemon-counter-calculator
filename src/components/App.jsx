@@ -14,15 +14,18 @@ function App() {
     const [pokemon, setPokemon] = useState({});
     const [types, setTypes] = useState([]);
     const [isPokemon, setIsPokemon] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     function handleQuery(query) {
-        console.log(query);
+        setIsLoading(true);
 
         if(isPokemon) {
             queryByName(query);
         } else {
             queryByType(query);
         }
+
+        setIsLoading(false);
     }
 
     function handleSelection(choice) {
@@ -46,7 +49,7 @@ function App() {
             <Heading />
             {isPokemon ? <SearchBar onSubmit={handleQuery} /> : <TypeSelector onSubmit={handleQuery}/>}
             <Selector onSelect={handleSelection} />
-            <CounterResults pokemon={pokemon} types={types} isPokemon={isPokemon} />
+            {!isLoading && <CounterResults pokemon={pokemon} types={types} isPokemon={isPokemon} />}
         </div>
     );
 }
