@@ -5,18 +5,17 @@ import Button from 'react-bootstrap/Button';
 
 function TypeSelector(props) {
 
-    const [types, setTypes] = useState({})
+    const [types, setTypes] = useState(['none', 'none']);
 
     function handleSelect(name, value) {
+        let tempTypes = types;
         if (name === 'sel1') {
-            setTypes(prevType => {
-                return {...prevType, type1: value}
-            });
+            tempTypes[0] = value;
         } else {
-            setTypes(prevType => {
-                return {...prevType, type2: value}
-            });
+            tempTypes[1] = value;
         }
+
+        setTypes(tempTypes);
     }
 
     function handleClick() {

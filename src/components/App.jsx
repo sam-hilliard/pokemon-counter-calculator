@@ -12,7 +12,7 @@ function App() {
 
     const baseURL = 'https://pokeapi.co/api/v2/';
     const [pokemon, setPokemon] = useState({});
-    const [types, setTypes] = useState([]);
+    const [typeData, setTypeData] = useState([]);
     const [isPokemon, setIsPokemon] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -24,8 +24,6 @@ function App() {
         } else {
             queryByType(query);
         }
-
-        setIsLoading(false);
     }
 
     function handleSelection(choice) {
@@ -38,18 +36,33 @@ function App() {
         }).catch(() => {
             setPokemon({error: `Could not find pokemon with name, "${query}."`});
         });
+
+        setIsLoading(false);
     }
 
     async function queryByType(query) {
+        let typeData = [];
+        query.forEach(type => {
+            if (type !== 'none') {
+                axios.get(baseURL + 'type/' + type).then(res => {
+                    let damageRelations = res.data.damage_relations;
+                    typeData.push(damageRelations);
+                }).catch(() => {
+                    typeData.push({error: `Could not find type with name, "${query}."`});
+                });
+            }
+        });
 
+        setTypeData(typeData);
+        setIsLoading(false);
     }
-
+    
     return (
         <div>
             <Heading />
             {isPokemon ? <SearchBar onSubmit={handleQuery} /> : <TypeSelector onSubmit={handleQuery}/>}
             <Selector onSelect={handleSelection} />
-            {!isLoading && <CounterResults pokemon={pokemon} types={types} isPokemon={isPokemon} />}
+            {!isLoading && <CounterResults pokemon={pokemon} typeData={typeData} isPokemon={isPokemon} />}
         </div>
     );
 }
