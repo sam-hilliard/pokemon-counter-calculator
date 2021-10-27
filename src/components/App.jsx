@@ -28,11 +28,24 @@ function App() {
 
     function handleSelection(choice) {
         setIsPokemon(choice);
+        setIsLoading(true);
     }
 
     async function queryByName(query) {
+        setTypeData([]);
         await axios.get(baseURL + 'pokemon/' + query.toLowerCase()).then(res => {
             setPokemon(res.data);
+            const typeURLs = res.data.types.map(obj => {
+                return obj.type.url;
+            });
+    
+            typeURLs.forEach(url => {
+                axios.get(url).then(res => {
+                    setTypeData(oldData => [...oldData, res.data.damage_relations]);
+                }).catch(err => {
+                    setTypeData(oldData => [...oldData, {error: `Could not find type with name, "${query}."`}]);
+                });
+            });
         }).catch(() => {
             setPokemon({error: `Could not find pokemon with name, "${query}."`});
         });
@@ -41,19 +54,16 @@ function App() {
     }
 
     async function queryByType(query) {
-        let typeData = [];
+        setTypeData([]);
         query.forEach(type => {
             if (type !== 'none') {
                 axios.get(baseURL + 'type/' + type).then(res => {
-                    let damageRelations = res.data.damage_relations;
-                    typeData.push(damageRelations);
+                    setTypeData(oldData => [...oldData, res.data.damage_relations]);
                 }).catch(() => {
-                    typeData.push({error: `Could not find type with name, "${query}."`});
+                    setTypeData(oldData => [...oldData, {error: `Could not find type with name, "${query}."`}]);
                 });
             }
         });
-
-        setTypeData(typeData);
         setIsLoading(false);
     }
     
@@ -62,7 +72,13 @@ function App() {
             <Heading />
             {isPokemon ? <SearchBar onSubmit={handleQuery} /> : <TypeSelector onSubmit={handleQuery}/>}
             <Selector onSelect={handleSelection} />
-            {!isLoading && <CounterResults pokemon={pokemon} typeData={typeData} isPokemon={isPokemon} />}
+            {!isLoading && 
+                <CounterResults 
+                    pokemon={pokemon} 
+                    typeData={typeData} 
+                    isPokemon={isPokemon} 
+                />
+            }
         </div>
     );
 }

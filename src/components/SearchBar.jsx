@@ -10,7 +10,9 @@ function SearchBar(props) {
     }
 
     function handleClick() {
-        props.onSubmit(query);
+        if (query !== null && /\S/.test(query))
+            props.onSubmit(query);
+        setQuery('');
     }
 
     return (

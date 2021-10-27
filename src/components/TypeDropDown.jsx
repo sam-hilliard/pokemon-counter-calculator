@@ -10,18 +10,22 @@ function TypeDropDown(props) {
     const [selected, setSelected] = useState('none');
     
     useEffect(() => {
-
+        let isMounted = true;
         axios.get('https://pokeapi.co/api/v2/type')
             .then((res) => {
-                setTypes(res.data.results.map(type => {
-                    return type.name;
-                }));
+                if (isMounted) {
+                    setTypes(res.data.results.map(type => {
+                        return type.name;
+                    }));
+                }
             }).catch((err) => {
                 console.log(err);
             });
-    });
+        return () => { isMounted = false};
+    }, []);
 
     function handleClick(e) {
+        e.preventDefault();
         setSelected(e.target.text);
         props.onSelect(props.name, e.target.text);
     }

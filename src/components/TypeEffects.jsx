@@ -29,6 +29,7 @@ function TypeEffects(props) {
             <h3>Attack Counters</h3>
             <p>Super Effective: {getCounters(true).counters}</p>
             {getCounters(true).counters2x.length > 0 && <p>2x Effective: {getCounters(true).counters2x}</p>}
+
             <h3>Defense Counters</h3>
             <p>Not Very Effective: {getCounters(false).counters}</p>
             {getCounters(false).counters2x.length > 0 && <p>2x Not Effective: {getCounters(false).counters2x}</p>}
