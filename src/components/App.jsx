@@ -55,6 +55,10 @@ function App() {
 
     async function queryByType(query) {
         setTypeData([]);
+
+        // removing duplicates
+        query = [...new Set(query)];
+
         query.forEach(type => {
             if (type !== 'none') {
                 axios.get(baseURL + 'type/' + type).then(res => {
