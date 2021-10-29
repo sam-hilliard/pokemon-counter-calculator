@@ -1,5 +1,9 @@
 import React from 'react';
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import CounterDisplay from './CounterDisplay';
 
 function TypeEffects(props) {
 
@@ -26,13 +30,24 @@ function TypeEffects(props) {
 
     return (
         <div>
-            <h3>Attack Counters</h3>
-            <p>Super Effective: {getCounters(true).counters}</p>
-            {getCounters(true).counters2x.length > 0 && <p>2x Effective: {getCounters(true).counters2x}</p>}
-
-            <h3>Defense Counters</h3>
-            <p>Not Very Effective: {getCounters(false).counters}</p>
-            {getCounters(false).counters2x.length > 0 && <p>2x Not Effective: {getCounters(false).counters2x}</p>}
+            <Container>
+                <Row>
+                    <Col>
+                        <CounterDisplay 
+                            isAttack={true}
+                            counters={getCounters(true).counters}
+                            doubleCounters={getCounters(true).counters2x} 
+                        />
+                    </Col>
+                    <Col>
+                        <CounterDisplay 
+                            isAttack={false}
+                            counters={getCounters(false).counters}
+                            doubleCounters={getCounters(false).counters2x} 
+                        />
+                    </Col>
+                </Row>
+            </Container>
         </div>
     )
 }
