@@ -2,6 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 import Heading from './Heading';
 import SearchBar from './SearchBar';
 import CounterResults from './CounterResults'
@@ -74,15 +78,17 @@ function App() {
     return (
         <div>
             <Heading />
-            {isPokemon ? <SearchBar onSubmit={handleQuery} /> : <TypeSelector onSubmit={handleQuery}/>}
-            <Selector onSelect={handleSelection} />
-            {!isLoading && 
-                <CounterResults 
-                    pokemon={pokemon} 
-                    typeData={typeData} 
-                    isPokemon={isPokemon} 
-                />
-            }
+            <Container>
+                {isPokemon ? <SearchBar onSubmit={handleQuery} /> : <TypeSelector onSubmit={handleQuery}/>}
+                <Selector onSelect={handleSelection} />
+                {!isLoading && 
+                    <CounterResults 
+                        pokemon={pokemon} 
+                        typeData={typeData} 
+                        isPokemon={isPokemon} 
+                    />
+                }
+            </Container>
         </div>
     );
 }
