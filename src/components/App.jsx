@@ -3,14 +3,14 @@ import { useState } from 'react';
 import axios from 'axios';
 
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 import Heading from './Heading';
 import SearchBar from './SearchBar';
 import CounterResults from './CounterResults'
 import Selector from './Selector';
 import TypeSelector from './TypeSelector';
+
+import '../css/App.css';
 
 function App() {
 
@@ -78,7 +78,7 @@ function App() {
     return (
         <div>
             <Heading />
-            <Container>
+            <Container className="centered">
                 {isPokemon ? <SearchBar onSubmit={handleQuery} /> : <TypeSelector onSubmit={handleQuery}/>}
                 <Selector onSelect={handleSelection} />
                 {!isLoading && 

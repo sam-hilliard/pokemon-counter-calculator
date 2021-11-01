@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
+import '../css/SearchBar.css';
+
 function SearchBar(props) {
     const [query, setQuery] = useState('');
 
@@ -16,9 +18,9 @@ function SearchBar(props) {
     }
 
     return (
-        <div>
+        <div className="search">
             <input type="text" value={query} onChange={handleChange} placeholder="Pokemon's Name" />
-            <Button onClick={handleClick}>Calculate</Button>
+            <Button className="calculate-btn" onClick={handleClick}>Calculate</Button>
         </div>
     );
 

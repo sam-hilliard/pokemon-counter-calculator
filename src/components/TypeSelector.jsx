@@ -23,10 +23,10 @@ function TypeSelector(props) {
     }
 
     return (
-        <div>
-            <TypeDropDown name='sel1' onSelect={handleSelect}/>
-            <TypeDropDown name='sel2' onSelect={handleSelect}/>
-            <Button onClick={handleClick}>Calculate</Button>
+        <div className="type-select">
+            <TypeDropDown name="sel1" onSelect={handleSelect}/>
+            <TypeDropDown name="sel2" onSelect={handleSelect}/>
+            <Button className="calculate-btn" onClick={handleClick}>Calculate</Button>
         </div>
     );
 }
