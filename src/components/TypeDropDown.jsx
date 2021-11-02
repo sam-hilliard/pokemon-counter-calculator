@@ -31,7 +31,7 @@ function TypeDropDown(props) {
     }
 
     return (
-            <Dropdown style={{display: 'inline-block'}}>
+            <Dropdown className="drop-down">
             <Dropdown.Toggle variant="light">
                 {selected}
             </Dropdown.Toggle>
