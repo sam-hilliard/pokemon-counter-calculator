@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 
+import '../css/Selector.css';
+
 function Selector(props) {
 
     const [isPokemon, setIsPokemon] = useState(true);
@@ -12,7 +14,7 @@ function Selector(props) {
     }
 
     return (
-        <div>
+        <div className="selector">
             <input checked={isPokemon} type="radio" value="pokemon" id="pokemon"
               onChange={handleChange} />
             <label htmlFor="pokemon">By Pokemon</label>
