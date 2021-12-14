@@ -1,15 +1,15 @@
 .attack {
-    border: 1px solid aqua;
+    border: 1px solid #badc58;
 }
 
 .attack > .card-header {
-    background-color: aqua;
+    background-color: #badc58;
 }
 
 .defense {
-    border: 1px solid burlywood;
+    border: 1px solid #95afc0;
 }
 
 .defense > .card-header {
-    background-color:burlywood;
+    background-color:#95afc0;
 }

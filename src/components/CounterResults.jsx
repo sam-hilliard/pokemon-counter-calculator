@@ -7,7 +7,7 @@ function CounterResults(props) {
 
     if (props.isPokemon && props.pokemon.hasOwnProperty('error')) {
         return(
-            <h3>{props.pokemon.error}</h3>
+            <h5>{props.pokemon.error}</h5>
         );
     } else {
         return(
