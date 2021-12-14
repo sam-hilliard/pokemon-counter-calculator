@@ -9,6 +9,7 @@ import SearchBar from './SearchBar';
 import CounterResults from './CounterResults'
 import Selector from './Selector';
 import TypeSelector from './TypeSelector';
+import Loading from './Loading';
 
 import '../css/App.css';
 
@@ -18,7 +19,7 @@ function App() {
     const [pokemon, setPokemon] = useState({});
     const [typeData, setTypeData] = useState([]);
     const [isPokemon, setIsPokemon] = useState(true);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     function handleQuery(query) {
         setIsLoading(true);
@@ -81,13 +82,14 @@ function App() {
             <Container className="centered">
                 {isPokemon ? <SearchBar onSubmit={handleQuery} /> : <TypeSelector onSubmit={handleQuery}/>}
                 <Selector onSelect={handleSelection} />
-                {!isLoading && 
+                {!isLoading && Object.keys(pokemon) !== 0 &&
                     <CounterResults 
                         pokemon={pokemon} 
                         typeData={typeData} 
                         isPokemon={isPokemon} 
                     />
                 }
+                {isLoading && <Loading />}
             </Container>
         </div>
     );
