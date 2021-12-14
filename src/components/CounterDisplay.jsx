@@ -6,7 +6,7 @@ import '../css/CounterDisplay.css'
 
 function CounterDisplay(props) {
     return (
-        <Card className={'mb-2 ' + (props.isAttack ? 'attack' : 'defense')}>
+        <Card className={'mb-2 ' + (props.isAttack ? 'attack' : 'defense')} style={{ width: '18rem', margin: '0 auto' }}>
             <Card.Header >{props.isAttack ? 'Attack' : 'Defense'} Counters</Card.Header>
             <Card.Body>
             <Card.Text>

@@ -30,7 +30,7 @@ function TypeEffects(props) {
 
     return (
         <div>
-            <Container>
+            <Container style={{ maxWidth: '50rem' }}>
                 <Row xs={1} sm={1} md={2}>
                     <Col>
                         <CounterDisplay 
