@@ -31,7 +31,7 @@ function TypeEffects(props) {
     return (
         <div>
             <Container>
-                <Row>
+                <Row xs={1} sm={1} md={2}>
                     <Col>
                         <CounterDisplay 
                             isAttack={true}

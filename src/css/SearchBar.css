@@ -1,6 +1,7 @@
 .search input {
     display: block;
-    width: 30rem;
+    width: 400px;
     height: 40px;
     margin: 0 auto;
+    resize: horizontal;
 }
