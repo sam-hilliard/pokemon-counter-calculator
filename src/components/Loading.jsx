@@ -4,8 +4,8 @@ import '../css/Loading.css';
 
 function Loading() {
     return (
-        <div class="loading-container">
-            <div class="loading"></div>
+        <div className="loading-container">
+            <div className="loading"></div>
         </div>
     );
 }

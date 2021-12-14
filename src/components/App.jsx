@@ -20,6 +20,7 @@ function App() {
     const [typeData, setTypeData] = useState([]);
     const [isPokemon, setIsPokemon] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
+    const [queryMade, setQueryMade] = useState(false);
 
     function handleQuery(query) {
         setIsLoading(true);
@@ -33,7 +34,7 @@ function App() {
 
     function handleSelection(choice) {
         setIsPokemon(choice);
-        setIsLoading(true);
+        setQueryMade(false);
     }
 
     async function queryByName(query) {
@@ -47,15 +48,16 @@ function App() {
             typeURLs.forEach(url => {
                 axios.get(url).then(res => {
                     setTypeData(oldData => [...oldData, res.data.damage_relations]);
-                }).catch(err => {
+                }).catch(() => {
                     setTypeData(oldData => [...oldData, {error: `Could not find type with name, "${query}."`}]);
                 });
             });
-        }).catch((e) => {
+        }).catch(() => {
             setPokemon({error: `Could not find pokemon with name, "${query}."`});
         });
 
         setIsLoading(false);
+        setQueryMade(true);
     }
 
     async function queryByType(query) {
@@ -74,6 +76,7 @@ function App() {
             }
         });
         setIsLoading(false);
+        setQueryMade(true);
     }
     
     return (
@@ -82,7 +85,7 @@ function App() {
             <Container className="centered">
                 {isPokemon ? <SearchBar onSubmit={handleQuery} /> : <TypeSelector onSubmit={handleQuery}/>}
                 <Selector onSelect={handleSelection} />
-                {!isLoading && Object.keys(pokemon) !== 0 &&
+                {!isLoading && queryMade &&
                     <CounterResults 
                         pokemon={pokemon} 
                         typeData={typeData} 
