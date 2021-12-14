@@ -50,7 +50,7 @@ function App() {
                     setTypeData(oldData => [...oldData, {error: `Could not find type with name, "${query}."`}]);
                 });
             });
-        }).catch(() => {
+        }).catch((e) => {
             setPokemon({error: `Could not find pokemon with name, "${query}."`});
         });
 

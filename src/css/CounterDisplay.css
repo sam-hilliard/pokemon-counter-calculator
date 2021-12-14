@@ -1,0 +1,15 @@
+.attack {
+    border: 1px solid aqua;
+}
+
+.attack > .card-header {
+    background-color: aqua;
+}
+
+.defense {
+    border: 1px solid burlywood;
+}
+
+.defense > .card-header {
+    background-color:burlywood;
+}
