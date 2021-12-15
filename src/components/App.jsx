@@ -10,6 +10,7 @@ import CounterResults from './CounterResults'
 import Selector from './Selector';
 import TypeSelector from './TypeSelector';
 import Loading from './Loading';
+import Footer from './Footer';
 
 import '../css/App.css';
 
@@ -94,6 +95,7 @@ function App() {
                 }
                 {isLoading && <Loading />}
             </Container>
+            <Footer />
         </div>
     );
 }
