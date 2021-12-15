@@ -5,8 +5,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CounterDisplay from './CounterDisplay';
 
+// displays both attack/defense counter results 
+// in two cards after query
 function TypeEffects(props) {
 
+    // parses gathered counter data into strings holding
+    // super effective and doubly effective counters
     function getCounters(isAttack) {
         let counters = '';
         let counters2x = '';

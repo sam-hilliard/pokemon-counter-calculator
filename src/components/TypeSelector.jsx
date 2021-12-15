@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 
 import '../css/TypeSelector.css';
 
+// allows user to choose types using two dropdowns for query
 function TypeSelector(props) {
 
     const [types, setTypes] = useState(['none', 'none']);

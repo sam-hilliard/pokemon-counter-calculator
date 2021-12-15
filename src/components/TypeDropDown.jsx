@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react';
 
 import Dropdown from 'react-bootstrap/Dropdown';
 
+// drop down for selecting pokemon type
 function TypeDropDown(props) {
 
     const [types, setTypes] = useState([]);
     const [selected, setSelected] = useState('none');
     
+    // gets list of all pokemon types
     useEffect(() => {
         let isMounted = true;
         axios.get('https://pokeapi.co/api/v2/type')
@@ -24,6 +26,7 @@ function TypeDropDown(props) {
         return () => { isMounted = false};
     }, []);
 
+    // replaces dropdown title with selection
     function handleClick(e) {
         e.preventDefault();
         setSelected(e.target.text);

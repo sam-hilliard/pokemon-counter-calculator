@@ -14,6 +14,7 @@ import Footer from './Footer';
 
 import '../css/App.css';
 
+// main application/parent of all components
 function App() {
 
     const baseURL = 'https://pokeapi.co/api/v2/';
@@ -23,6 +24,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(false);
     const [queryMade, setQueryMade] = useState(false);
 
+    // triggers when calc button clicked
     function handleQuery(query) {
         setIsLoading(true);
 
@@ -33,11 +35,13 @@ function App() {
         }
     }
 
+    // triggers when user changes query type using radio buttons
     function handleSelection(choice) {
         setIsPokemon(choice);
         setQueryMade(false);
     }
 
+    // handling query based on pokemon name
     async function queryByName(query) {
         setTypeData([]);
         await axios.get(baseURL + 'pokemon/' + query.toLowerCase()).then(res => {
@@ -61,6 +65,7 @@ function App() {
         setQueryMade(true);
     }
 
+    // handling query based on using type selection
     async function queryByType(query) {
         setTypeData([]);
 
@@ -86,6 +91,8 @@ function App() {
             <Container className="centered">
                 {isPokemon ? <SearchBar onSubmit={handleQuery} /> : <TypeSelector onSubmit={handleQuery}/>}
                 <Selector onSelect={handleSelection} />
+
+                {/* only want to render results after finished loading/query has been made */}
                 {!isLoading && queryMade &&
                     <CounterResults 
                         pokemon={pokemon} 
@@ -93,6 +100,7 @@ function App() {
                         isPokemon={isPokemon} 
                     />
                 }
+
                 {isLoading && <Loading />}
             </Container>
             <Footer />

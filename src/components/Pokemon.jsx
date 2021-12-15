@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 
 import '../css/Pokemon.css';
 
+// displays pokemon information (name, picture, type) in a card
 function Pokemon(props) {
 
     function parseTypes(types) {

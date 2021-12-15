@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 
 import '../css/CounterDisplay.css'
 
+// displays counter data in a card
 function CounterDisplay(props) {
     return (
         <Card className={'mb-2 ' + (props.isAttack ? 'attack' : 'defense')} style={{ width: '18rem', margin: '0 auto' }}>

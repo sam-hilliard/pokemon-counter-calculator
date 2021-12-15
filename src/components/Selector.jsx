@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import '../css/Selector.css';
 
+// allows user to choose between querying by pokemon or type
 function Selector(props) {
 
     const [isPokemon, setIsPokemon] = useState(true);

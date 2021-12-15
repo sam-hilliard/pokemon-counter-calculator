@@ -3,6 +3,7 @@ import React from 'react';
 import Pokemon from './Pokemon';
 import TypeEffects from './TypeEffects';
 
+// displays pokemon queried (if relevant) and defense/attack counters
 function CounterResults(props) {
 
     if (props.isPokemon && props.pokemon.hasOwnProperty('error')) {

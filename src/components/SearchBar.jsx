@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 
 import '../css/SearchBar.css';
 
+// used to query a pokemon by name
 function SearchBar(props) {
     const [query, setQuery] = useState('');
 
