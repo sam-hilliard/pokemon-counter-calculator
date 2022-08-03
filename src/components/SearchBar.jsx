@@ -13,13 +13,15 @@ function SearchBar(props) {
     const [query, setQuery] = useState('');
     const [allPokemon, setAllPokemon] = useState([]);
     const [suggestedPokemon, setSuggestedPokemon] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
 
     useEffect(() => {
         const baseURL = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+        setAllPokemon([]);
 
+        setIsLoading(true);
         axios.get(baseURL).then(res => {
-            // setAllPokemon(res.data.results);
             res.data.results.forEach(pokemon => {
                 axios.get(pokemon.url).then(res => {
                     setAllPokemon(prevPokemon => {
@@ -28,6 +30,7 @@ function SearchBar(props) {
                 });
             });
         });
+        setIsLoading(false);
 
     }, []);
 
@@ -45,8 +48,9 @@ function SearchBar(props) {
     }
 
     function handleClick() {
-        if (query !== null && /\S/.test(query))
+        if (query !== null && /\S/.test(query)) {
             props.onSubmit(query);
+        }
         setQuery('');
     }
 
@@ -54,7 +58,7 @@ function SearchBar(props) {
     return (
         <div className="search">
             <input type="text" value={query} onChange={handleChange} placeholder="Pokemon's Name" />
-            <SearchResultsDropDown results={suggestedPokemon} />
+            {!isLoading && query !== '' && <SearchResultsDropDown results={suggestedPokemon} />}
             <Button className="calculate-btn" onClick={handleClick}>Calculate</Button>
         </div>
     );
