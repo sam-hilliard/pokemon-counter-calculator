@@ -13,24 +13,17 @@ function SearchBar(props) {
     const [query, setQuery] = useState('');
     const [allPokemon, setAllPokemon] = useState([]);
     const [suggestedPokemon, setSuggestedPokemon] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+
+    const resultsLimit = 10;
 
 
     useEffect(() => {
-        const baseURL = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+        const baseURL = 'https://pokeapi.co/api/v2/pokemon?limit=500';
         setAllPokemon([]);
 
-        setIsLoading(true);
         axios.get(baseURL).then(res => {
-            res.data.results.forEach(pokemon => {
-                axios.get(pokemon.url).then(res => {
-                    setAllPokemon(prevPokemon => {
-                        return [{name: res.data.name, image: res.data.sprites.front_default}, ...prevPokemon];
-                    });
-                });
-            });
+            setAllPokemon(res.data.results);
         });
-        setIsLoading(false);
 
     }, []);
 
@@ -40,11 +33,18 @@ function SearchBar(props) {
         setQuery(curQuery);
         setSuggestedPokemon([]);
 
-        allPokemon.forEach(pokemon => {
+        let count = 0;
+        let index = 0;
+
+        while (index < allPokemon.length && count < resultsLimit) {
+            let pokemon = allPokemon[index];
             if (pokemon.name.startsWith(curQuery.toLowerCase())) {
+                count++;
                 setSuggestedPokemon(prevPokemon => [pokemon, ...prevPokemon]);
             }
-        });
+
+            index++;
+        }
     }
 
     function handleClick() {
@@ -58,7 +58,7 @@ function SearchBar(props) {
     return (
         <div className="search">
             <input type="text" value={query} onChange={handleChange} placeholder="Pokemon's Name" />
-            {!isLoading && query !== '' && <SearchResultsDropDown results={suggestedPokemon} />}
+            {query !== '' && <SearchResultsDropDown results={suggestedPokemon} />}
             <Button className="calculate-btn" onClick={handleClick}>Calculate</Button>
         </div>
     );
