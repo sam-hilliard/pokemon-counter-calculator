@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
+import '../css/SearchResult.css';
+
 export default function SearchResult(props) {
     const [pokeImage, setPokeImage] = useState({});
 

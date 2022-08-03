@@ -1,0 +1,21 @@
+.search-result {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+.search-result:hover {
+    background-color: #eeff;
+}
+
+.poke-pic {
+    width: 60px;
+    height: 60px;
+}
+
+    .poke-pic img {
+        display: block;
+        width: 100%;
+    }

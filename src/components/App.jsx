@@ -88,7 +88,7 @@ function App() {
     return (
         <div>
             <Heading />
-            <Container className="centered">
+            <div className="centered">
                 {isPokemon ? <SearchBar onSubmit={handleQuery} /> : <TypeSelector onSubmit={handleQuery}/>}
                 <Selector onSelect={handleSelection} />
 
@@ -102,7 +102,7 @@ function App() {
                 }
 
                 {isLoading && <Loading />}
-            </Container>
+            </div>
             <Footer />
         </div>
     );
