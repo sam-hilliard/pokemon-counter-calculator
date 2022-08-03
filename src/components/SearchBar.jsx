@@ -18,10 +18,8 @@ function SearchBar(props) {
     useEffect(() => {
         const baseURL = 'https://pokeapi.co/api/v2/pokemon?limit=151';
 
-        axios.get(baseURL + 'pokemon/' + query.toLowerCase()).then(res => {
-            res.data.results.forEach(pokemon => {
-                setAllPokemon(prevPokemon => [pokemon.name, ...prevPokemon]);
-            });
+        axios.get(baseURL).then(res => {
+            setAllPokemon(res.data.results);
         });
 
     }, []);
@@ -30,19 +28,11 @@ function SearchBar(props) {
     function handleChange(event) {
         let curQuery = event.target.value;
         setQuery(curQuery);
+        setSuggestedPokemon([]);
 
         allPokemon.forEach(pokemon => {
-            if (pokemon.startsWith(curQuery.toLowerCase())) {
+            if (pokemon.name.startsWith(curQuery.toLowerCase())) {
                 setSuggestedPokemon(prevPokemon => [pokemon, ...prevPokemon]);
-            } else {
-                setSuggestedPokemon(prevPokemon => {
-                    const toRemoveIndex = prevPokemon.indexOf(pokemon);
-                    if (toRemoveIndex !== -1) {
-                        return prevPokemon.splice(toRemoveIndex, 1);
-                    } else {
-                        return prevPokemon;
-                    }
-                });
             }
         });
     }
