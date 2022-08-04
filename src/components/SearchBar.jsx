@@ -58,7 +58,7 @@ function SearchBar(props) {
     return (
         <div className="search">
             <input type="text" value={query} onChange={handleChange} placeholder="Pokemon's Name" />
-            {query !== '' && <SearchResultsDropDown results={suggestedPokemon} />}
+            {query !== '' && <SearchResultsDropDown results={suggestedPokemon} onSubmit={props.onSubmit} />}
             <Button className="calculate-btn" onClick={handleClick}>Calculate</Button>
         </div>
     );

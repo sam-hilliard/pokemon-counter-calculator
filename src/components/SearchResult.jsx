@@ -13,8 +13,12 @@ export default function SearchResult(props) {
         });
     }, [props.image_url]);
 
+    function handleClick() {
+        props.onSubmit(props.name)
+    }
+
     return(
-        <div className="search-result">
+        <div className="search-result" onClick={handleClick}>
             <div className="poke-pic">
                 <img src={pokeImage} alt={props.name} />
             </div>
