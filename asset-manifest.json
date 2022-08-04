@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/pokemon-counter-calculator/static/css/main.e2f76e80.chunk.css",
-    "main.js": "/pokemon-counter-calculator/static/js/main.6bc7fb64.chunk.js",
-    "main.js.map": "/pokemon-counter-calculator/static/js/main.6bc7fb64.chunk.js.map",
-    "runtime-main.js": "/pokemon-counter-calculator/static/js/runtime-main.faed2003.js",
-    "runtime-main.js.map": "/pokemon-counter-calculator/static/js/runtime-main.faed2003.js.map",
+    "main.css": "/pokemon-counter-calculator/static/css/main.8ad6e828.chunk.css",
+    "main.js": "/pokemon-counter-calculator/static/js/main.06688207.chunk.js",
+    "main.js.map": "/pokemon-counter-calculator/static/js/main.06688207.chunk.js.map",
+    "runtime-main.js": "/pokemon-counter-calculator/static/js/runtime-main.06329bcf.js",
+    "runtime-main.js.map": "/pokemon-counter-calculator/static/js/runtime-main.06329bcf.js.map",
     "static/css/2.f2512455.chunk.css": "/pokemon-counter-calculator/static/css/2.f2512455.chunk.css",
-    "static/js/2.811eec07.chunk.js": "/pokemon-counter-calculator/static/js/2.811eec07.chunk.js",
-    "static/js/2.811eec07.chunk.js.map": "/pokemon-counter-calculator/static/js/2.811eec07.chunk.js.map",
+    "static/js/2.f61b12d6.chunk.js": "/pokemon-counter-calculator/static/js/2.f61b12d6.chunk.js",
+    "static/js/2.f61b12d6.chunk.js.map": "/pokemon-counter-calculator/static/js/2.f61b12d6.chunk.js.map",
     "index.html": "/pokemon-counter-calculator/index.html",
     "static/css/2.f2512455.chunk.css.map": "/pokemon-counter-calculator/static/css/2.f2512455.chunk.css.map",
-    "static/css/main.e2f76e80.chunk.css.map": "/pokemon-counter-calculator/static/css/main.e2f76e80.chunk.css.map",
-    "static/js/2.811eec07.chunk.js.LICENSE.txt": "/pokemon-counter-calculator/static/js/2.811eec07.chunk.js.LICENSE.txt"
+    "static/css/main.8ad6e828.chunk.css.map": "/pokemon-counter-calculator/static/css/main.8ad6e828.chunk.css.map",
+    "static/js/2.f61b12d6.chunk.js.LICENSE.txt": "/pokemon-counter-calculator/static/js/2.f61b12d6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.faed2003.js",
+    "static/js/runtime-main.06329bcf.js",
     "static/css/2.f2512455.chunk.css",
-    "static/js/2.811eec07.chunk.js",
-    "static/css/main.e2f76e80.chunk.css",
-    "static/js/main.6bc7fb64.chunk.js"
+    "static/js/2.f61b12d6.chunk.js",
+    "static/css/main.8ad6e828.chunk.css",
+    "static/js/main.06688207.chunk.js"
   ]
 }
